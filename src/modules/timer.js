@@ -21,11 +21,7 @@ const timer = (deadline) => {
         timerMinutes.textContent = ('0' + getTime.minutes).slice(-2)
         timerSeconds.textContent = ('0' + getTime.seconds).slice(-2)
         if(getTime.timeRemaining > 0) {
-           let idSetInterval = setInterval(() => {
-            upDateClock()
-           }, 1000) 
-        } else if(getTime.timeRemaining = 0) {
-            clearInterval(idSetInterval)
+           setInterval(upDateClock, 1000) 
         } else {
             timerHours.textContent = '00'
             timerMinutes.textContent = '00'
