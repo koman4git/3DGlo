@@ -17,11 +17,19 @@ const timer = (deadline) => {
     const upDateClock = () => {
         let getTime = getTimeRamaining()
         
-        timerHours.textContent = getTime.hours
-        timerMinutes.textContent = getTime.minutes
-        timerSeconds.textContent = getTime.seconds
+        timerHours.textContent = ('0'  + getTime.hours).slice(-2)
+        timerMinutes.textContent = ('0' + getTime.minutes).slice(-2)
+        timerSeconds.textContent = ('0' + getTime.seconds).slice(-2)
         if(getTime.timeRemaining > 0) {
-            setTimeout(upDateClock, 1000)
+           let idSetInterval = setInterval(() => {
+            upDateClock()
+           }, 1000) 
+        } else if(getTime.timeRemaining = 0) {
+            clearInterval(idSetInterval)
+        } else {
+            timerHours.textContent = '00'
+            timerMinutes.textContent = '00'
+            timerSeconds.textContent = '00'
         }
         
     }
