@@ -1,5 +1,5 @@
 const twoModule = () => {
-    const two = 'two';
-    console.log(two);
+    
+    console.log('twoMoвг');
 }
 export default twoModule;
