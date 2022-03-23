@@ -1,3 +1,3 @@
 import timer from './modules/timer';
 
-timer('10 march 2022');
+timer('25 march 2022');
