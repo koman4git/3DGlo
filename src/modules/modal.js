@@ -20,7 +20,7 @@ const modal = () => {
         idInterval = requestAnimationFrame(animate);
 
         if (count < 25) {
-          popupContent.style.top = -50 + count * 3 + "%";
+          popupContent.style.top = -45 + count * 3 + "%";
         } else {
           cancelAnimationFrame(idInterval);
         }
