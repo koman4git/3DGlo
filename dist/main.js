@@ -16,7 +16,17 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_timer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/timer */ \"./src/modules/timer.js\");\n/* harmony import */ var _modules_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menu */ \"./src/modules/menu.js\");\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\n\n\n\n\n(0,_modules_timer__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('25 march 2022');\n(0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__[\"default\"])()\n;(0,_modules_modal__WEBPACK_IMPORTED_MODULE_2__[\"default\"])()\n\n\n//# sourceURL=webpack://3dglo/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modules_timer__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/timer */ \"./src/modules/timer.js\");\n/* harmony import */ var _modules_menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/menu */ \"./src/modules/menu.js\");\n/* harmony import */ var _modules_modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/modal */ \"./src/modules/modal.js\");\n/* harmony import */ var _modules_calculator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/calculator */ \"./src/modules/calculator.js\");\n/* harmony import */ var _modules_validation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/validation */ \"./src/modules/validation.js\");\n\n\n\n\n\n\n(0,_modules_timer__WEBPACK_IMPORTED_MODULE_0__[\"default\"])('25 april 2022');\n(0,_modules_menu__WEBPACK_IMPORTED_MODULE_1__[\"default\"])()\n;(0,_modules_modal__WEBPACK_IMPORTED_MODULE_2__[\"default\"])()\n;(0,_modules_calculator__WEBPACK_IMPORTED_MODULE_3__[\"default\"])()\n;(0,_modules_validation__WEBPACK_IMPORTED_MODULE_4__[\"default\"])();\n\n\n//# sourceURL=webpack://3dglo/./src/index.js?");
+
+/***/ }),
+
+/***/ "./src/modules/calculator.js":
+/*!***********************************!*\
+  !*** ./src/modules/calculator.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n\n\nconst calculator = () => {\n    const calcItems = document.querySelectorAll(\"input[type=text].calc-item\");\n  };\n  \n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (calculator);\n\n//# sourceURL=webpack://3dglo/./src/modules/calculator.js?");
 
 /***/ }),
 
@@ -47,6 +57,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst timer = (deadline) => {\n    const timerHours = document.getElementById('timer-hours')\n    const timerMinutes = document.getElementById('timer-minutes')\n    const timerSeconds = document.getElementById('timer-seconds')\n    \n    const getTimeRamaining = () => {\n        let dateStop = new Date(deadline).getTime()\n        let dateNow = new Date().getTime()\n        let timeRemaining = (dateStop - dateNow) / 1000\n        let hours = Math.floor((timeRemaining / 60) / 60)\n        let minutes = Math.floor((timeRemaining / 60) % 60)\n        let seconds = Math.floor(timeRemaining % 60)\n\n        hours = hours < 10 ? \"0\" + hours : hours;\n        minutes = minutes < 10 ? \"0\" + minutes : minutes;\n        seconds = seconds < 10 ? \"0\" + seconds : seconds;\n        \n        return {timeRemaining, hours, minutes, seconds}\n    }    \n\n    const upDateClock = () => {\n        let getTime = getTimeRamaining()\n        \n        timerHours.textContent = getTime.hours\n        timerMinutes.textContent = getTime.minutes\n        timerSeconds.textContent = getTime.seconds\n        if(getTime.timeRemaining > 0) {\n           setInterval(upDateClock, 1000) \n        } else {\n            timerHours.textContent = '00'\n            timerMinutes.textContent = '00'\n            timerSeconds.textContent = '00'\n        }\n        \n    }\n    upDateClock()\n    getTimeRamaining()\n    \n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (timer);\n\n//# sourceURL=webpack://3dglo/./src/modules/timer.js?");
+
+/***/ }),
+
+/***/ "./src/modules/validation.js":
+/*!***********************************!*\
+  !*** ./src/modules/validation.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n\n\nconst validation = () => {\n  const inputUserName = document.querySelectorAll(\"input[type=text]\");\n  const inputMessage = document.querySelector(\".mess\");\n  const inputEmail = document.querySelectorAll(\"input[type=email\");\n  const inputTel = document.querySelectorAll(\"input[type=tel]\");\n\n  inputUserName.forEach((item) => {\n    if (item.classList.contains(\"calc-item\")) {\n      item.addEventListener(\"input\", (e) => {\n        e.target.value = e.target.value.replace(/\\D+/gi, \"\");\n      });\n    } else {\n      item.addEventListener(\"input\", (e) => {\n        e.target.value = e.target.value.replace(/[^а-яА-ЯёЁ\\-\\s]+/i, \"\");\n      });\n    }\n  });\n\n  inputMessage.addEventListener(\"input\", (e) => {\n    e.target.value = e.target.value.replace(/[^а-яА-ЯёЁ\\-\\s]+/i, \"\");\n  });\n\n  inputEmail.forEach((item) => {\n    item.addEventListener(\"input\", (e) => {\n      e.target.value = e.target.value.replace(/[^\\w@\\-.!~*']+/gi, \"\");\n    });\n  });\n\n  inputTel.forEach((item) => {\n    item.addEventListener(\"input\", (e) => {\n      e.target.value = e.target.value.replace(/[^\\d+()-]+/gi, \"\");\n    });\n  });\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (validation);\n\n//# sourceURL=webpack://3dglo/./src/modules/validation.js?");
 
 /***/ })
 
