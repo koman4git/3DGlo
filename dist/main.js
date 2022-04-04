@@ -40,6 +40,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/modules/helpers.js":
+/*!********************************!*\
+  !*** ./src/modules/helpers.js ***!
+  \********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"animate\": () => (/* binding */ animate)\n/* harmony export */ });\n\n\nconst animate = ({ timing, draw, duration }) => {\n  let start = performance.now()\n\n  requestAnimationFrame(function animate(time) {\n    // timeFraction изменяется от 0 до 1\n    let timeFraction = (time - start) / duration;\n    if (timeFraction > 1) {\n      timeFraction = 1\n    }\n\n    // вычисление текущего состояния анимации\n    let progress = timing(timeFraction)\n\n    draw(progress) // отрисовать её\n\n    if (timeFraction < 1) {\n      requestAnimationFrame(animate);\n    }\n  })\n}\n\n\n\n//# sourceURL=webpack://3dglo/./src/modules/helpers.js?");
+
+/***/ }),
+
 /***/ "./src/modules/menu.js":
 /*!*****************************!*\
   !*** ./src/modules/menu.js ***!
@@ -56,7 +66,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n\n\nconst modal = () => {\n  const modal = document.querySelector(\".popup\");\n  const buttons = document.querySelectorAll(\".popup-btn\");\n  const closeBtn = modal.querySelector(\".popup-close\");\n  const screen = window.screen.width;\n\n  buttons.forEach((btn) => {\n    btn.addEventListener(\"click\", () => {\n      let count = 0;\n      let idInterval;\n\n      modal.style.display = \"block\";\n      popupContent.style.top = -50 + \"%\";\n\n      const animate = () => {\n        count++;\n        idInterval = requestAnimationFrame(animate);\n\n        if (count < 25) {\n          popupContent.style.top = -45 + count * 3 + \"%\";\n        } else {\n          cancelAnimationFrame(idInterval);\n        }\n\n        if (screen < 768) {\n          modal.style.display = \"block\";\n          popupContent.style.top = 20 + \"%\";\n        }\n      };\n\n      animate();\n    });\n  });\n\n  modal.addEventListener('click', (e) => {\n    if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {\n        modal.style.display = \"none\";\n    };\n  })\n};\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modal);\n\n//# sourceURL=webpack://3dglo/./src/modules/modal.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers */ \"./src/modules/helpers.js\");\n\n\n\nconst modal = () => {\n  const modal = document.querySelector(\".popup\")\n  const buttons = document.querySelectorAll(\".popup-btn\")\n  const popupContent = modal.querySelector(\".popup-content\")\n  const screen = window.screen.width\n\n  buttons.forEach((btn) => {\n    btn.addEventListener(\"click\", () => {\n      // let count = 0\n      // let idInterval\n\n      modal.style.display = \"block\"\n      popupContent.style.top = -50 + \"%\"\n\n      if (screen > 768) {\n        (0,_helpers__WEBPACK_IMPORTED_MODULE_0__.animate)({\n          duration: 500,\n          timing(timeFraction) {\n            return timeFraction\n          },\n          draw(progress) {\n            popupContent.style.top = -50 + 80 * progress + '%'\n          },\n        })\n      } else {\n        modal.style.display = 'block'\n        popupContent.style.top = 20 + '%'\n      }\n      \n      // const animate = () => {\n      //   count++\n      //   idInterval = requestAnimationFrame(animate);\n\n      //   if (count < 25) {\n      //     popupContent.style.top = -45 + count * 3 + \"%\"\n      //   } else {\n      //     cancelAnimationFrame(idInterval)\n      //   }\n\n      //   if (screen < 768) {\n      //     modal.style.display = \"block\"\n      //     popupContent.style.top = 20 + \"%\"\n      //   }\n      // };\n\n      // animate()\n    })\n  })\n\n  modal.addEventListener('click', (e) => {\n    if (!e.target.closest('.popup-content') || e.target.classList.contains('popup-close')) {\n        modal.style.display = \"none\"\n    }\n  })\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (modal);\n\n//# sourceURL=webpack://3dglo/./src/modules/modal.js?");
 
 /***/ }),
 
