@@ -41,5 +41,5 @@ sendForm({
         type: "block",
         id: "total",
       },
-    ],
+    ]
   })

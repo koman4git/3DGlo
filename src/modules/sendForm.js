@@ -11,7 +11,7 @@ const sendForm = ({ formId, someElem = [] }) => {
   statusBlock.style.color = "#fff"
 
   const validate = (list) => {
-    let success = true;
+    let success = true
 
     list.forEach((item) => {
       item.style.border = null
@@ -23,12 +23,12 @@ const sendForm = ({ formId, someElem = [] }) => {
       } else if (item.name === "user_phone") {
         if (item.value.length < 6 || item.value.length > 16) {
           success = false
-          item.style.border = "1px solid red";
+          item.style.border = "1px solid red"
         }
       } else if (item.name === "user_message") {
         if (item.value.length < 2) {
           success = false
-          item.style.border = "1px solid red";
+          item.style.border = "1px solid red"
         }
       } else if (item.name === "user_email") {
         if (item.value.length === 0) {
@@ -40,9 +40,10 @@ const sendForm = ({ formId, someElem = [] }) => {
       }
     })
 
+    
 
     return success
-  };
+  }
 
   const sendData = (data) => {
     return fetch("https://jsonplaceholder.typicode.com/posts", {
@@ -52,7 +53,7 @@ const sendForm = ({ formId, someElem = [] }) => {
         "Content-Type": "application/json",
       },
     }).then((res) => res.json())
-  }
+  };
 
   const submitForm = () => {
     const formElements = form.querySelectorAll("input")
@@ -65,7 +66,7 @@ const sendForm = ({ formId, someElem = [] }) => {
     formData.forEach((val, key) => {
       formBody[key] = val
       
-    });
+    })
 
     someElem.forEach((elem) => {
       const element = document.getElementById(elem.id)
@@ -75,7 +76,7 @@ const sendForm = ({ formId, someElem = [] }) => {
       } else if (elem.type === "input" && element.value) {
         formBody[elem.id] = element.value
       }
-    })
+    });
 
     if (validate(formElements)) {
       sendData(formBody)
@@ -91,12 +92,12 @@ const sendForm = ({ formId, someElem = [] }) => {
         })
         .catch((error) => {
           statusBlock.textContent = errorText
-        })
+        });
     } else {
       
 
       form.append(statusBlock);
-      statusBlock.textContent = textError;
+      statusBlock.textContent = textError
 
       
       setTimeout(() => {
@@ -116,7 +117,7 @@ const sendForm = ({ formId, someElem = [] }) => {
       event.preventDefault()
 
       submitForm()
-    })
+    });
   } catch (error) {
     
   }
