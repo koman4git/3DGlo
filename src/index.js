@@ -24,8 +24,8 @@ sendForm({
         id: "total",
       },
     ],
-  })
-  sendForm({
+  });
+sendForm({
     formId: "form2",
     someElem: [
       {
@@ -33,8 +33,8 @@ sendForm({
         id: "total",
       },
     ],
-  })
-  sendForm({
+  });
+sendForm({
     formId: "form3",
     someElem: [
       {
